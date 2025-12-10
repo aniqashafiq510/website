@@ -1,0 +1,16 @@
+<!-- Save this as /public/favicon.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" width="48" height="48">
+  <!-- Outer rim -->
+  <circle cx="12" cy="12" r="9" fill="none" stroke="#7C3AED" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></circle>
+  <!-- Inner hub -->
+  <circle cx="12" cy="12" r="3" fill="#7C3AED"></circle>
+  <!-- Spokes (6) -->
+  <g stroke="#7C3AED" stroke-width="1.6" stroke-linecap="round">
+    <line x1="12" y1="3.2" x2="12" y2="8.8"></line>
+    <line x1="12" y1="15.2" x2="12" y2="20.8"></line>
+    <line x1="3.6" y1="7.6" x2="8.8" y2="12"></line>
+    <line x1="15.2" y1="12" x2="20.4" y2="16.4"></line>
+    <line x1="3.6" y1="16.4" x2="8.8" y2="12"></line>
+    <line x1="15.2" y1="12" x2="20.4" y2="7.6"></line>
+  </g>
+</svg>

@@ -1,0 +1,42 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1509 1476" width="1509" height="1476">
+	<title>bank-alfalah-seeklogo-svg</title>
+	<defs>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp1">
+			<path d="m0 1474.78l705.19-1456.05c10.8-22.43 41.69-25.33 56.45-5.2l680.03 922.46c164.7 223.37 5.5 539.31-271.91 539.67-110.42 0.16-213.88-53.47-277.3-143.79l-118.13-168.24c-40.24-57.07-117.49-73.93-177.8-38.54z"/>
+		</clipPath>
+		<linearGradient id="g1" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-340.312,120.821,-121.128,-341.177,1022.977,722.372)">
+			<stop offset="0" stop-color="#ee2722"/>
+			<stop offset="1" stop-color="#9c1815"/>
+		</linearGradient>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp2">
+			<path d="m1441.78 935.99l-680.14-922.46c-14.76-20.13-45.65-17.23-56.45 5.2l-705.19 1456.05 878.1-515.18c60.3-35.32 148.69-18.52 188.93 38.6l118.12 168.08c63.53 90.36 164.28 144.01 274.72 143.89h0.2c0 0 0 0 0.1 0 65.19-109.87 69.36-255.11-18.39-374.18z"/>
+		</clipPath>
+		<linearGradient id="g2" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1089.129,554.938,-727.461,1427.723,376.701,740.221)">
+			<stop offset="0" stop-color="#9c1815"/>
+			<stop offset=".4" stop-color="#ee2722"/>
+			<stop offset="1" stop-color="#ee2722"/>
+		</linearGradient>
+	</defs>
+	<style>
+		.s0 { fill: url(#g1) } 
+		.s1 { fill: url(#g2) } 
+	</style>
+	<g id="g8">
+		<g id="g10">
+			<g id="g12">
+				<g id="Clip-Path: g14" clip-path="url(#cp1)">
+					<g id="g14">
+						<path id="path26" class="s0" d="m0 1474.8l705.2-1456.1c10.8-22.4 41.7-25.3 56.4-5.2l680.1 922.5c164.7 223.4 5.5 539.3-271.9 539.7-110.5 0.1-213.9-53.5-277.3-143.8l-118.2-168.3c-40.2-57-117.5-73.9-177.8-38.5z"/>
+					</g>
+				</g>
+			</g>
+			<g id="g28">
+				<g id="Clip-Path: g30" clip-path="url(#cp2)">
+					<g id="g30">
+						<path id="path44" class="s1" d="m1441.8 936l-680.2-922.5c-14.7-20.1-45.6-17.2-56.4 5.2l-705.2 1456.1 878.1-515.2c60.3-35.3 148.7-18.5 188.9 38.6l118.1 168.1c63.6 90.3 164.3 144 274.8 143.9h0.2c0 0 0 0 0.1 0 65.2-109.9 69.3-255.1-18.4-374.2z"/>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</svg>
