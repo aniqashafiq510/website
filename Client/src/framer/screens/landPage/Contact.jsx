@@ -51,7 +51,7 @@ const Contact = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.5 }}
         viewport={{ once: true }}
-        className="w-[50%] mt-8 mx-auto text-center rounded-md bg-gray-700 py-10 px-6 md:px-16 text-white"
+        className="w-[50%] mt-14 mx-auto text-center rounded-md bg-gray-700 py-10 px-6 md:px-16 text-white"
       >
         <h2 className="text-3xl md:text-4xl font-bold mb-6">Contact Us</h2>
         <p className="text-gray-200 md:text-lg mb-8">

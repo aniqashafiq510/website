@@ -38,6 +38,40 @@ const MyPosts = () => {
       (post) => post.postedBy?._id?.toString() === user?._id?.toString()
     ) || [];
 
+
+    if (user.isBlocked)
+  return (
+    <div className="min-h-screen ml-[15vw] pt-5 flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800
+     to-black px-4">
+      <div className=" bg-gray-900/80 backdrop-blur-md border border-gray-700 rounded-2xl 
+      shadow-2xl p-8 text-center">
+        
+        <div className="text-5xl mb-4">🚫</div>
+
+        <h2 className="text-2xl font-semibold text-white mb-3">
+          Account Restricted
+        </h2>
+
+        <p className="text-gray-300 mb-2">
+          Your account has been blocked by an administrator.
+        </p>
+
+        <p className="text-sm text-gray-400 mb-6">
+          If you believe this is a mistake, please contact support to request a review.
+        </p>
+
+        <Link to='/support'>
+        <button
+        className="w-full py-3 rounded-xl bg-red-500 hover:bg-red-600 transition font-semibold text-white"
+        >
+          Contact Support
+        </button>
+        </Link>
+
+      </div>
+    </div>
+  );
+
   return (
     <div className="pt-[20vh] px-6 ml-[20vw]">
       {/* HEADER */}
@@ -46,12 +80,21 @@ const MyPosts = () => {
       </div>
     {/* Add Post Button */}
       <div className="flex justify-end items-center m-3">
-        <button
+        {user ? (
+          <button
           onClick={() => navigate("/add-post")}
           className="px-4 py-2 bg-violet-600 text-white rounded-lg hover:bg-violet-700 transition"
         >
           + Add New Post
         </button>
+        ): (
+          <button
+          onClick={() => navigate("/login")}
+          className="px-4 py-2 bg-violet-600 text-white rounded-lg hover:bg-violet-700 transition"
+        >
+          + Add New Post
+        </button>
+        )}
       </div>
 
       {/* POSTS LIST */}

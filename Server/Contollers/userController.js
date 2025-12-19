@@ -610,27 +610,46 @@ const blockUser = async (req, res) => {
     if (!user) {
       return res.status(404).json({
         success: false,
-        message: "User not found"
+        message: "User not found",
       });
     }
 
+    // Email content
+    const emailBody = `
+      <p>Hello ${user.name || "User"},</p>
+      <p>Your account has been <strong>blocked</strong> by an administrator.</p>
+      <p>If you believe this is a mistake, please contact our support team.</p>
+      <br />
+      <p>Regards,<br/>WheelSpot Team</p>
+    `;
+
+    const params = emailTemplate(
+      user.email,
+      "Account Blocked",
+      emailBody
+    );
+
+    // Send email
+    await awsSES.sendEmail(params).promise();
+
     return res.status(200).json({
       success: true,
-      message: "User blocked successfully",
-      data: user
+      message: "User blocked successfully and email sent",
+      data: user,
     });
   } catch (error) {
     console.error("Block User Error:", error);
     return res.status(500).json({
       success: false,
       message: "Server Error",
-      error: error.message
+      error: error.message,
     });
   }
 };
 
+
 // Unblock a user
- const unblockUser = async (req, res) => {
+const unblockUser = async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -643,24 +662,43 @@ const blockUser = async (req, res) => {
     if (!user) {
       return res.status(404).json({
         success: false,
-        message: "User not found"
+        message: "User not found",
       });
     }
 
+    // Email content
+    const emailBody = `
+      <p>Hello ${user.name || "User"},</p>
+      <p>Your account has been <strong>unblocked</strong>.</p>
+      <p>You can now log in and continue using WheelSpot.</p>
+      <br />
+      <p>Regards,<br/>WheelSpot Team</p>
+    `;
+
+    const params = emailTemplate(
+      user.email,
+      "Account Unblocked",
+      emailBody
+    );
+
+    // Send email
+    await awsSES.sendEmail(params).promise();
+
     return res.status(200).json({
       success: true,
-      message: "User unblocked successfully",
-      data: user
+      message: "User unblocked successfully and email sent",
+      data: user,
     });
   } catch (error) {
     console.error("Unblock User Error:", error);
     return res.status(500).json({
       success: false,
       message: "Server Error",
-      error: error.message
+      error: error.message,
     });
   }
 };
+;
 
 
 

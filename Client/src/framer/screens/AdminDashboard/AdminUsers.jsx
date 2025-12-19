@@ -3,8 +3,10 @@ import axios from 'axios';
 import apis from '../../../config/Api';
 import UserCard from './UserCard';
 import BigLoader from '../../components/BigLoader';
+import {useAuth} from '../../context/Context'
 
 const AdminUsers = () => {
+  const [auth] = useAuth()
   const [users, setUsers] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -12,17 +14,25 @@ const AdminUsers = () => {
   const [search, setSearch] = useState('');
 
   const fetchAllUsers = async () => {
-    try {
-      const { data } = await axios.get(`${apis.User}/all`);
-      const allUsers = Array.isArray(data?.data) ? data.data : [];
-      setUsers(allUsers);
-      setFilteredUsers(allUsers); // initially show all
-      setLoading(false);
-    } catch (err) {
-      setError('Failed to fetch users');
-      setLoading(false);
-    }
-  };
+  try {
+    const { data } = await axios.get(`${apis.User}/all`);
+
+    const allUsers = Array.isArray(data?.data) ? data.data : [];
+
+    // ⛔ Filter out admins
+    const nonAdminUsers = allUsers.filter(
+      (user) => user.role !== "admin"
+    );
+
+    setUsers(nonAdminUsers);
+    setFilteredUsers(nonAdminUsers); // initially show filtered users
+    setLoading(false);
+  } catch (err) {
+    setError("Failed to fetch users");
+    setLoading(false);
+  }
+};
+
 
   useEffect(() => {
     fetchAllUsers();
@@ -33,17 +43,26 @@ const AdminUsers = () => {
     setSearch(value);
 
     const filtered = users.filter((user) =>
-      (user.name && user.name.toLowerCase().includes(value)) ||
-      (user.email && user.email.toLowerCase().includes(value)) ||
-      (user.city && user.city.toLowerCase().includes(value)) ||
-      (user.role && user.role.toLowerCase().includes(value))
-    );
+  (user.name && user.name.toLowerCase().includes(value)) ||
+  (user.email && user.email.toLowerCase().includes(value)) ||
+  (user.city && user.city.toLowerCase().includes(value)) ||
+  (user.role && user.role.toLowerCase().includes(value))
+);
+
 
     setFilteredUsers(filtered);
   };
 
   if (loading) return <BigLoader />;
   if (error) return <p className="text-center mt-8 text-red-500">{error}</p>;
+  if (!auth?.user) {
+  return (
+    <div className="pt-[20vh] md:ml-[25vw] text-center text-xl text-red-400 dark:text-gray-700">
+      <p>
+        Only admin can access this page!
+      </p>
+    </div>
+  );}
 
   return (
     <div className="px-4 md:px-8 lg:px-16 pt-3">
@@ -64,7 +83,7 @@ const AdminUsers = () => {
 
       {/* Users grid */}
       {filteredUsers?.length > 0 ? (
-        <div className=" ml-[20vw] w-[90%] grid grid-cols-1  md:grid-cols-2 gap-4">
+        <div className=" ml-[20vw]  grid grid-cols-1  md:grid-cols-2 gap-4">
           {filteredUsers.map((user) => (
             <UserCard key={user._id} user={user} fetchUsers={fetchAllUsers} />
           ))}

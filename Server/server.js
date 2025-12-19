@@ -8,6 +8,7 @@ import imageRoute from "./Routes/imageRoute.js";
 import ratingRouter from "./Routes/ratingRoute.js";
 import postRouter from "./Routes/postRoutes.js";
 import contactRouter from "./Routes/contactRoute.js";
+import cookieParser from 'cookie-parser'
 
 
 
@@ -20,7 +21,7 @@ const port = 9090;
 
 app.use(express.json())
 // this middleware will use to show our json data into js object so that it become available for us to use or read
-
+app.use(cookieParser())
 app.use(cors())
 app.use(morgan("dev"))
 

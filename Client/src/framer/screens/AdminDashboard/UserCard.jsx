@@ -15,7 +15,7 @@ const UserCard = ({ user, fetchUsers }) => {
 
     try {
       setLoading(true);
-      await axios.delete(`${apis.auth}/delete/${user._id}`);
+      await axios.delete(`${apis.User}/delete/${user._id}`);
       fetchUsers(); // refresh user list
       successToast("User deleted successfully!")
     } catch (err) {
@@ -31,11 +31,11 @@ const UserCard = ({ user, fetchUsers }) => {
     try {
       setLoading(true);
       if (isBlocked) {
-        await axios.put(`${apis.auth}/unblock/${user._id}`);
+        await axios.put(`${apis.User}/unblock/${user._id}`);
         setIsBlocked(false);
         successToast("User unblocked successfully!")
       } else {
-        await axios.put(`${apis.auth}/block/${user._id}`);
+        await axios.put(`${apis.User}/block/${user._id}`);
         setIsBlocked(true);
         successToast("User blocked successfully!")
       }

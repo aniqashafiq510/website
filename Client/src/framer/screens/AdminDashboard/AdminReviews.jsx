@@ -5,9 +5,12 @@ import { FaTrash, FaStar } from "react-icons/fa";
 import { motion } from "framer-motion";
 import apis from "../../../config/Api";
 import BigLoader from "../../components/BigLoader";
+import { useAuth } from "../../context/Context";
+
 
 
 const AdminReviews = () => {
+  const [auth] = useAuth()
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [deletingId, setDeletingId] = useState(null);
@@ -47,9 +50,17 @@ const AdminReviews = () => {
   };
 
   if (loading) return <BigLoader />;
+  if (!auth?.user) {
+  return (
+    <div className="pt-[20vh] md:ml-[25vw] text-center text-xl text-red-400 dark:text-gray-700">
+      <p>
+        Only admin can access this page!
+      </p>
+    </div>
+  );}
 
   return (
-    <div className="pt-[15vh] md:ml-[20vw] px-4">
+    <div className=" md:ml-[20vw] px-4">
       {/* Show message if no reviews */}
       {reviews.length === 0 && (
         <p className="text-center dark:text-gray-700 text-white text-xl">

@@ -41,10 +41,10 @@ const SideBar = () => {
     }
 
   const navItems = [
-    { name: "Users", icon: <FaUsers />, path: "users" },
     { name: "Posts", icon: <FaCar />, path: "allPosts" },
     { name: "Profile", icon: <FaUserCircle />, path: "profile" },
-    { name: "Reviews", icon: <MdReviews />, path: "allReviews" }
+    { name: "Reviews", icon: <MdReviews />, path: "allReviews" },
+    { name: "Users", icon: <FaUsers />, path: "users" }
   ];
 
   const handleLinkClick = () => {

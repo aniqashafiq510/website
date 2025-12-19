@@ -39,9 +39,10 @@ const BuyerSideBar = () => {
     }
 
   const navItems = [
-    { name: "Profile", icon: <FaUserCircle />, path: "profile" },
+    
     { name: "Favourites", icon: <FaHeart />, path: "favourites" },
-    { name: "My Reviews", icon: <MdReviews />, path: "reviews" }
+    { name: "My Reviews", icon: <MdReviews />, path: "reviews" },
+    { name: "Profile", icon: <FaUserCircle />, path: "profile" }
   ];
 
   const handleLinkClick = () => {

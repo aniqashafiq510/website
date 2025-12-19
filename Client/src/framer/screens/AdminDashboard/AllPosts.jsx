@@ -5,16 +5,15 @@ import { Link, useNavigate } from "react-router-dom";
 import PostsCard from "../../components/PostsCard";
 import { IoTrashBin } from "react-icons/io5";
 import BigLoader from "../../components/BigLoader";
+import { useAuth } from "../../context/Context";
+
 
 
 
 const UsersPosts = () => {
+  const [auth] = useAuth()
   const dispatch = useDispatch();
- 
-
-  
-
-  const { posts, loading, error } = useSelector((state) => state.posts);
+ const { posts, loading, error } = useSelector((state) => state.posts);
 
   useEffect(() => {
     dispatch(fetchPosts());
@@ -29,6 +28,14 @@ const UsersPosts = () => {
         dispatch(deletePostById(id))
       }
   }
+  if (!auth?.user) {
+  return (
+    <div className="pt-[20vh] md:ml-[25vw] text-center text-xl text-red-400 dark:text-gray-700">
+      <p>
+        Only admin can access this page!
+      </p>
+    </div>
+  );}
 
 return (
     <div className=" px-6 ml-[15vw]">

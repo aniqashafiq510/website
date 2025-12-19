@@ -22,7 +22,9 @@ const PostsCard = ({ details }) => {
     fuelType,
     images,
     engine,
+    phone
   } = details;
+  
 
   const [showPhone, setShowPhone] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
@@ -76,7 +78,7 @@ const PostsCard = ({ details }) => {
       </div>
 
       {/* CONTENT */}
-      <div className="p-4 flex flex-col justify-between h-full">
+      <div className="p-4 flex flex-col justify-between">
         {/* Title + Price */}
         <div className="flex justify-between items-start mb-2">
           <div>
@@ -114,7 +116,7 @@ const PostsCard = ({ details }) => {
         </div>
 
         {/* Contact Button */}
-        <div className="flex flex-col md:flex-row items-start md:items-center gap-2 mt-auto">
+        <div className="flex flex-col md:flex-row items-start md:items-center gap-2 ">
           <button
             onClick={() => setShowPhone(!showPhone)}
             className="flex items-center gap-2 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm md:text-base rounded-lg transition font-medium"
@@ -123,8 +125,8 @@ const PostsCard = ({ details }) => {
             {showPhone ? "Hide Number" : "Contact Owner"}
           </button>
           {showPhone && (
-            <span className="text-green-600 font-medium text-sm md:text-base">
-              +{details.phone || "N/A"}
+            <span className="text-green-600 font-medium text-sm md:text-base hover:underline">
+              +{phone || "N/A"}
             </span>
           )}
         </div>

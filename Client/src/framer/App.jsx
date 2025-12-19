@@ -33,6 +33,7 @@ import { UserProvider } from "./context/UserContext";
 import AddReview from "./components/Addreview";
 import SellerReviews from "./screens/sellerDashboard/SellerReviews";
 import AdminReviews from "./screens/AdminDashboard/AdminReviews";
+import Contact from "./screens/landPage/Contact";
 
 
 
@@ -102,6 +103,7 @@ const AppContent = () => (
         <Route path="/add-post" element={<AddPost />} />
         <Route path="/update-post/:id" element={<UpdatePost />} />
         <Route path="/add-review" element={<AddReview />} />
+        <Route path="/support" element={<Contact />} />
         
         
         
