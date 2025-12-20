@@ -278,7 +278,7 @@ const forgetPassword = async (req, res) => {
 
         // nano id is a unique, hard-to-guess identifier(character string) that ties the reset link to this specific user and request.
         const nano_id = nanoid(10)
-        console.log(nano_id)
+        
 
         emailExist.resetPasswordkey = nano_id
         await emailExist.save()
@@ -573,29 +573,52 @@ const deleteUser = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const user = await User.findByIdAndDelete(id);
+    // 1️⃣ Find user first
+    const user = await User.findById(id);
 
     if (!user) {
       return res.status(404).json({
         success: false,
-        message: "User not found"
+        message: "User not found",
       });
     }
 
+    // 2️⃣ Email content
+    const emailBody = `
+      <p>Hello ${user.name || "User"},</p>
+      <p>Your account has been <strong>deleted</strong> by an administrator.</p>
+      <p>If you believe this action was taken by mistake, please contact our support team.</p>
+      <br />
+      <p>Regards,<br/>WheelSpot Team</p>
+    `;
+
+    const params = emailTemplate(
+      user.email,
+      "Account Deleted",
+      emailBody
+    );
+
+    // 3️⃣ Send email
+    await awsSES.sendEmail(params).promise();
+
+    // 4️⃣ Delete user after email is sent
+    await User.findByIdAndDelete(id);
+
     return res.status(200).json({
       success: true,
-      message: "User deleted successfully",
-      data: user
+      message: "User deleted successfully and email sent",
+      data: user,
     });
   } catch (error) {
     console.error("Delete User Error:", error);
     return res.status(500).json({
       success: false,
       message: "Server Error",
-      error: error.message
+      error: error.message,
     });
   }
 };
+
 
 const blockUser = async (req, res) => {
   const { id } = req.params;

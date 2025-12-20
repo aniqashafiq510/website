@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPosts,deletePostById} from "../../Redux/Actions/postActions";
-import { Link, useNavigate } from "react-router-dom";
 import PostsCard from "../../components/PostsCard";
 import { IoTrashBin } from "react-icons/io5";
 import BigLoader from "../../components/BigLoader";
 import { useAuth } from "../../context/Context";
+import { successToast } from "../../components/Toastify";
 
 
 
@@ -26,6 +26,7 @@ const UsersPosts = () => {
        const confirm = window.confirm("Are you sure you want to delete the post?")
       if(confirm){
         dispatch(deletePostById(id))
+        successToast("Post deleted successfully!")
       }
   }
   if (!auth?.user) {

@@ -33,9 +33,10 @@ const Activate = () => {
             localStorage.setItem("auth", JSON.stringify(data))
             setAuth(data)
             infoToast(`You will redirected to dashboard shortly`)
+            const role = data?.user?.role;
                     setTimeout(()=> {
                             successToast(`You are logged in successfully!`)
-                            navigate('/dashboard')
+                            navigate(`/${role}/dashboard`)
                         },2000)
             
            
