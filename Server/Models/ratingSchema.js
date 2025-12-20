@@ -4,7 +4,7 @@ const ratingSchema = new Schema({
   
   value: {
     type: Number,
-    min: 0.5,
+    min: 1,
     max: 5,
     required: true,
   },

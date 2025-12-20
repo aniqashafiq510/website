@@ -27,8 +27,8 @@ const SellerReviews = () => {
       try {
         setLoading(true);
         const { data } = await axios.get(`${apis.reviews}/get-All`);
-        const userReviews = data.reviews.filter(
-          (review) => review.name._id === auth?.user?._id
+        const userReviews = data?.reviews.filter(
+          (review) => review?.name?._id === auth?.user?._id
         );
         setReviews(userReviews);
       } catch (err) {

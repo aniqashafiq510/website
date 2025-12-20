@@ -46,6 +46,9 @@ const AddPost = () => {
     e.preventDefault();
     if (!user?._id) return errorToast("User not logged in");
 
+    if (!imageIds || imageIds.length === 0) {
+    return errorToast("Please upload at least one image!");
+  }
     const postData = {
       ...form,
       images: imageIds,
